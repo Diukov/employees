@@ -6,7 +6,24 @@ import EmployeesAddForm from '../app-employees-add-form/app-employees-add-form';
 
 import './app.css';
 
+function WhoAmI(props) {
+  return (
+    <div>
+      <h1>
+        My name is {props.name}, surname - {props.surname}
+      </h1>
+      <a href="{props.link}">My profile</a>
+    </div>
+  );
+};
+
 function App() {
+  const data = [
+    { name: 'John Cena', salary: 800, increase: true, id: 1 },
+    { name: 'Dmytro Diukov', salary: 1600, increase: false, id: 2 },
+    { name: 'Alex Kane', salary: 2900, increase: true, id: 3 },
+  ];
+
   return (
     <div className="app">
       <AppInfo />
@@ -16,9 +33,11 @@ function App() {
         <AppFilter />
       </div>
 
-      <EmployeesList />
+      <EmployeesList data={data} />
 
       <EmployeesAddForm />
+
+      <WhoAmI name="John" surname="Smith" link="facebook.com" />
     </div>
   );
 }
