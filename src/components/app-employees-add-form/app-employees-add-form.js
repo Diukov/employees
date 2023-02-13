@@ -16,6 +16,18 @@ class EmployeesAddForm extends Component {
     })
   }
 
+  onSubmit = (event) => {
+    event.preventDefault();
+    if (this.state.name.length < 2 || this.state.salary <= 0) return;
+
+    this.props.onAdd(this.state.name, this.state.salary)
+
+    this.setState({
+      name: '',
+      salary: ''
+    })
+  }
+
   render() {
     const { name, salary } = this.state;
 
@@ -24,7 +36,9 @@ class EmployeesAddForm extends Component {
         <h3>
           Add new employee
         </h3>
-        <form action="POST" className="add-form d-flex">
+        <form action="POST"
+          className="add-form d-flex"
+          onSubmit={this.onSubmit}>
           <input type="text"
             className="form-control new-post-label"
             placeholder="What's his name?"
@@ -37,7 +51,8 @@ class EmployeesAddForm extends Component {
             name="salary"
             value={salary}
             onChange={this.onValueChange} />
-          <button type="submit" className="btn btn-outline-light">
+          <button type="submit"
+            className="btn btn-outline-light">
             Add
           </button>
         </form>
