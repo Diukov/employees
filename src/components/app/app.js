@@ -87,8 +87,8 @@ class App extends Component {
 
   render() {
     const { data, term, filter } = this.state;
-    const totalCount = this.state.data.length;
-    const forIncreaseCount = this.state.data.filter(item => item.increase).length;
+    const totalCount = data.length;
+    const forIncreaseCount = data.filter(item => item.increase).length;
     const visibleData = this.filterEmployees(this.searchEmployee(data, term), filter);
 
     return (
